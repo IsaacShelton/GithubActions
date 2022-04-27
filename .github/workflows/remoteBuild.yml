@@ -6,13 +6,23 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  BUILD_TYPE: Release
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}
     steps:
+    - uses: actions/checkout@v3
     - name: Get latest CMake and Ninja
       uses: lukka/get-cmake@latest
+    - name: Configure
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
     - name: Build
-      run: mkdir build && cd build && cmake .. -G Ninja && ninja
+      # Build your program with the given configuration
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
     - name: Run
       run: ./HelloWorld
