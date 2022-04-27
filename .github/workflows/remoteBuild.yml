@@ -1,0 +1,20 @@
+name: Remote Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest CMake and Ninja
+        uses: lukka/get-cmake@latest
+      - name: Build
+      run: mkdir build
+      run: cd build
+      run: cmake .. -G Ninja
+      run: ninja
+      run: ./HelloWorld
