@@ -13,9 +13,6 @@ jobs:
     - name: Get latest CMake and Ninja
       uses: lukka/get-cmake@latest
     - name: Build
-    run: mkdir build
-    run: cd build
-    run: cmake .. -G Ninja
-    run: ninja
+      run: mkdir build && cd build && cmake .. -G Ninja && ninja
     - name: Run
-    run: ./HelloWorld
+      run: ./HelloWorld
