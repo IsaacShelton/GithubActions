@@ -20,6 +20,15 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            compiler: gcc
+          - os: macos-latest
+            target: Macos
+            compiler: gcc
+          - os: windows-latest
+            target: Windows
+            compiler: x86_64-w64-mingw32-gcc
     steps:
       - uses: actions/checkout@v3
       - name: Get latest CMake and Ninja
