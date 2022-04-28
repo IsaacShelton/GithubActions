@@ -136,9 +136,9 @@ jobs:
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: "nightly"
+          automatic_release_tag: nightly
           prerelease: true
-          title: ${{ "Nightly " + github.sha }}
+          title: ${{ 'Nightly ' + github.sha }}
           files: >
             stage/x86_64-Windows-HelloWorld.exe
             stage/arm64-MacOS-HelloWorld
