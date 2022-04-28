@@ -131,7 +131,7 @@ jobs:
           mkdir stage
           mv windows-latest/build/HelloWorld.exe stage/x86_64-Windows-HelloWorld.exe
           mv macos-latest/build/HelloWorld stage/arm64-MacOS-HelloWorld
-          mv ubuntu-latest/build/HelloWorld stage/x86_64-Ubuntu-HelloWorld
+          mv ubuntu-latest/build/HelloWorld stage/x86_64-Ubuntu-HelloWorld2
       - name: Release
         uses: ColinPitrat/update-release@v1.0.1
         with:
@@ -139,4 +139,4 @@ jobs:
           files: >
             stage/x86_64-Windows-HelloWorld.exe
             stage/arm64-MacOS-HelloWorld
-            stage/x86_64-Ubuntu-HelloWorld
+            stage/x86_64-Ubuntu-HelloWorld2
