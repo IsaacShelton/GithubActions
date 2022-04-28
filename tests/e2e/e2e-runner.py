@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import sys
-from framework import *
+from framework import test, e2e_framework_run
 
 def run_all_tests():
     executable = sys.argv[1]

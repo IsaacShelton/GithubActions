@@ -1,8 +1,8 @@
 
-# --------------------------------------------------
-# Minimal E2E Testing Framework for CLI Applications
+# ---------------------------------------------------------
+# Minimal E2E Testing Framework for Command-Line Programs
 #     by Isaac Shelton
-# --------------------------------------------------
+# ---------------------------------------------------------
 
 import sys
 import subprocess
