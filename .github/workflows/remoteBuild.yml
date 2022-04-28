@@ -25,8 +25,7 @@ jobs:
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
       - name: Archive
-        run: tar -cvf build.tar.gz build
-        run: tar -cvf e2e-test-suite.tar.gz tests/e2e
+        run: tar -cvf build.tar.gz build & tar -cvf e2e-test-suite.tar.gz tests/e2e
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
