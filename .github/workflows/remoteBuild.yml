@@ -25,13 +25,26 @@ jobs:
       - name: Build
         # Build your program with the given configuration
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      - name: Archive
+        run: tar -cvf build.tar.gz build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-archive
+          path: build.tar.gz
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build-archive
+      - name: Unpack
+        run: tar -xvf build.tar.gz
       - name: Run
-        working-directory: ${{github.workspace}}/build
+        working-directory: build
         run: ./HelloWorld
       - name: Test
-        working-directory: ${{github.workspace}}/build
+        working-directory: build
         run: ctest -C ${{env.BUILD_TYPE}}
