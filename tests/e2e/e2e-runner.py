@@ -51,14 +51,13 @@ def test(args, expected_output):
     res = subprocess.run(args, capture_output=True)
     res.check_returncode()
 
-    actual_output = res.stdout.decode('ascii')
+    actual_output = res.stdout.decode('ascii').replace('\r\n','\n')
 
     if actual_output != expected_output:
         print(RED + "TEST FAILED: Command " + str(args) + " does not match expected output." + NORMAL)
         print(RED + "Expected...\n" + NORMAL + expected_output)
         print(RED + "Actual...\n" + NORMAL + actual_output)
         all_good = False
-        print(RED + "Raw bytes...\n" + NORMAL + actual_output)
-        print(res.stdout)
+        print(RED + "Raw bytes...\n" + NORMAL + res.stdout)
 
 main()

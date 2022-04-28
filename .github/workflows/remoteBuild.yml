@@ -29,15 +29,15 @@ jobs:
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
-      - name: Archive 1/2
+      - name: Archive Build Result
         uses: a7ul/tar-action@v1.1.0
         with:
           command: c
           files: build
           outPath: build.tar.gz
-      - name: Archive 2/2
+      - name: Archive E2E Infrastructure
         uses: a7ul/tar-action@v1.1.0
-        if: ${{ matrix.os }} == 'ubuntu-latest'
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           command: c
           cwd: tests
@@ -50,7 +50,7 @@ jobs:
           path: build.tar.gz
       - name: Upload E2E Testing Infrastructure Artifact
         uses: actions/upload-artifact@v2
-        if: ${{ matrix.os }} == 'ubuntu-latest'
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           name: e2e-archive
           path: e2e.tar.gz
