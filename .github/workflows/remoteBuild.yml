@@ -138,8 +138,9 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: nightly
           prerelease: true
-          title: ${{ format('Nightly/{0}', github.sha) }}
-          files: >
+          title: Nightly 
+          body: ${{ format('Nightly Build - {0}', github.sha) }} 
+          files: |
             stage/x86_64-Windows-HelloWorld.exe
             stage/arm64-MacOS-HelloWorld
             stage/x86_64-Ubuntu-HelloWorld
