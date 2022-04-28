@@ -2,7 +2,7 @@
 #include "CuTest.h"
 
 void TestHelloWorld(CuTest *test){
-	CuAssertIntEquals(test, 100, -1);
+	CuAssertIntEquals(test, 100, 100);
 }
 
 CuSuite *HelloSuite(){
