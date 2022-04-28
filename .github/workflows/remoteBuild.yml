@@ -51,4 +51,3 @@ jobs:
       - name: Unit Test
         working-directory: build
         run: ctest -C ${{env.BUILD_TYPE}}
-      - name: Integration Test
