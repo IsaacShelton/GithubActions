@@ -83,7 +83,7 @@ jobs:
         uses: a7ul/tar-action@v1.1.0
         with:
           command: x
-          files: build.tar.gz
+          files: build-${{ matrix.os }}.tar.gz
       - name: Unit Test
         working-directory: build
         run: ctest -C ${{env.BUILD_TYPE}}
