@@ -63,7 +63,7 @@ jobs:
         run: python3 e2e-runner.py ../build/HelloWorld
   deploy:
     needs: test
-    - name: Update release
+    runs-on: ubuntu-latest
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
