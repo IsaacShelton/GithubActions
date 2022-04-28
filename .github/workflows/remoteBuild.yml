@@ -37,6 +37,7 @@ jobs:
           outPath: build.tar.gz
       - name: Archive 2/2
         uses: a7ul/tar-action@v1.1.0
+        if: ${{ matrix.os }} == 'ubuntu-latest'
         with:
           command: c
           cwd: tests
@@ -45,10 +46,11 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: build-archive
+          name: build-${{ matrix.os }}-archive
           path: build.tar.gz
       - name: Upload E2E Testing Infrastructure Artifact
         uses: actions/upload-artifact@v2
+        if: ${{ matrix.os }} == 'ubuntu-latest'
         with:
           name: e2e-archive
           path: e2e.tar.gz
@@ -67,7 +69,7 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
-          name: build-archive
+          name: build-${{ matrix.os }}-archive
       - name: Download E2E Testing Infrastructure Artifact
         uses: actions/download-artifact@v2
         with:
