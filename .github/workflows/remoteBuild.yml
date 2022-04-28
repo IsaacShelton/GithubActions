@@ -9,6 +9,7 @@ on:
 env:
   BUILD_TYPE: Release
   CTEST_OUTPUT_ON_FAILURE: On
+  IS_GITHUB_WORKFLOW: On
 
 jobs:
   build:
