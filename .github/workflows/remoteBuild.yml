@@ -61,8 +61,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        ci_node_total: [3]
-        ci_node_index: [0, 1, 2]
     steps:
       - name: Setup Python
         uses: actions/setup-python@v3.1.2
