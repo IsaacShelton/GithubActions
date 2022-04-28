@@ -18,7 +18,7 @@ try:
     res.check_returncode()
     assert res.stdout == "Hello World\n"
 except subprocess.CalledProcessError as e:
-    print("e2e Testing - Command Failed...")
+    print("e2e Testing - Command exited with non-zero status")
     print("Cmd: " + str(e.cmd))
     print("Out ---------------------------")
     print(e.output.decode('ascii'))
