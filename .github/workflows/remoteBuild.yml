@@ -107,7 +107,7 @@ jobs:
         with:
           name: build-ubuntu-latest-archive
       - name: Pre-Unpack
-        run: mkdir {windows-latest, macos-latest, ubuntu-latest}
+        run: mkdir windows-latest macos-latest ubuntu-latest
       - name: Unpack Windows Build
         uses: a7ul/tar-action@v1.1.0
         with:
