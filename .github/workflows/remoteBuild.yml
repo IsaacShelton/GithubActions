@@ -72,7 +72,7 @@ jobs:
       - name: Unpack
         run: tar -xvf build.tar.gz
       - name: Release
-        uses: johnwbyrd/update-release@v1.0.0
+        uses: ColinPitrat/update-release@v1.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: build/HelloWorld
