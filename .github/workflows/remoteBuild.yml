@@ -55,6 +55,9 @@ jobs:
       - name: Unit Test
         working-directory: build
         run: ctest -C ${{env.BUILD_TYPE}}
+      - name: Pre-run
+        working-directory: e2e-test-suite
+        run: ../build/HelloWorld
       - name: E2E Test
         working-directory: e2e-test-suite
         run: python3 e2e-runner.py ../build/HelloWorld
