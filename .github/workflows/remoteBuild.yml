@@ -139,7 +139,6 @@ jobs:
           automatic_release_tag: nightly
           prerelease: true
           title: Nightly 
-          body: ${{ format('Nightly Build - {0}', github.sha) }} 
           files: |
             stage/x86_64-Windows-HelloWorld.exe
             stage/arm64-MacOS-HelloWorld
