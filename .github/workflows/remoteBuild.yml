@@ -23,7 +23,6 @@ jobs:
       - name: Configure
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
       - name: Build
-        # Build your program with the given configuration
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
       - name: Archive
         run: tar -cvf build.tar.gz build
@@ -36,6 +35,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Python
+        uses: actions/setup-python@v3.1.2
+        with:
+          python-version: '3.x' 
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
@@ -45,6 +48,7 @@ jobs:
       - name: Run
         working-directory: build
         run: ./HelloWorld
-      - name: Test
+      - name: Unit Test
         working-directory: build
         run: ctest -C ${{env.BUILD_TYPE}}
+      - name: Integration Test
