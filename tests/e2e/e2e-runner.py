@@ -58,5 +58,7 @@ def test(args, expected_output):
         print(RED + "Expected...\n" + NORMAL + expected_output)
         print(RED + "Actual...\n" + NORMAL + actual_output)
         all_good = False
+        print(RED + "Raw bytes...\n" + NORMAL + actual_output)
+        print(res.stdout)
 
 main()
