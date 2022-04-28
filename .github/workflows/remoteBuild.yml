@@ -55,6 +55,8 @@ jobs:
       - name: Unit Test
         working-directory: build
         run: ctest -C ${{env.BUILD_TYPE}}
+      - name: Pre-pre-run
+        run: ls -la
       - name: Pre-run
         working-directory: e2e-test-suite
         run: ../build/HelloWorld
