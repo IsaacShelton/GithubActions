@@ -8,6 +8,7 @@ on:
 
 env:
   BUILD_TYPE: Release
+  CTEST_OUTPUT_ON_FAILURE: On
 
 jobs:
   build:
@@ -27,3 +28,6 @@ jobs:
     - name: Run
       working-directory: ${{github.workspace}}/build
       run: ./HelloWorld
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C ${{env.BUILD_TYPE}}
