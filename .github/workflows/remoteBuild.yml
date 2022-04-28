@@ -51,7 +51,9 @@ jobs:
         with:
           name: e2e-test-suite-archive
       - name: Unpack
-        run: tar -xvf build.tar.gz & tar -xvf e2e-test-suite.tar.gz
+        run: |
+          tar -xvf build.tar.gz & \
+          mkdir e2e-test-suite && tar -xvf -C e2e-test-suite e2e-test-suite.tar.gz --strip-components=1
       - name: Unit Test
         working-directory: build
         run: ctest -C ${{env.BUILD_TYPE}}
