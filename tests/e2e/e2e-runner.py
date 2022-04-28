@@ -16,6 +16,7 @@ exe = sys.argv[1]
 try:
     res = subprocess.run([exe], capture_output=True)
     res.check_returncode()
+    print(res.stdout)
     assert res.stdout == "Hello World!\n"
 except subprocess.CalledProcessError as e:
     print("e2e Testing - Command exited with non-zero status")
