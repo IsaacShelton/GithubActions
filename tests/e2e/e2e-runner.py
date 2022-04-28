@@ -14,9 +14,11 @@ if len(sys.argv) != 2:
 exe = sys.argv[1]
 
 try:
-    subprocess.run([exe], capture_output=True).check_returncode()
+    res = subprocess.run([exe], capture_output=True)
+    res.check_returncode()
+    assert res.stdout == "Hello World\n"
 except subprocess.CalledProcessError as e:
-    print("e2e Testing Failed...")
+    print("e2e Testing - Command Failed...")
     print("Cmd: " + str(e.cmd))
     print("Out ---------------------------")
     print(e.output.decode('ascii'))
