@@ -61,3 +61,18 @@ jobs:
       - name: E2E Test
         working-directory: ${{github.workspace}}/e2e
         run: python3 e2e-runner.py ../build/HelloWorld
+  deploy:
+    needs: test
+    - name: Update release
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build-archive
+      - name: Unpack
+        run: tar -xvf build.tar.gz
+      - name: Release
+        uses: johnwbyrd/update-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: build/HelloWorld
