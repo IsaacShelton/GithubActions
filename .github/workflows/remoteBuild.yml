@@ -142,4 +142,3 @@ jobs:
             stage/x86_64-Windows-HelloWorld.exe
             stage/arm64-MacOS-HelloWorld
             stage/x86_64-Ubuntu-HelloWorld
-  
