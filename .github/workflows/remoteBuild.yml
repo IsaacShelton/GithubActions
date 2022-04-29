@@ -54,44 +54,8 @@ jobs:
         with:
           name: e2e-archive
           path: e2e.tar.gz
-  test:
-    needs: build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
-    steps:
-      - name: Setup Python
-        uses: actions/setup-python@v3.1.2
-        with:
-          python-version: '3.x' 
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build-${{ matrix.os }}-archive
-      - name: Download E2E Testing Infrastructure Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: e2e-archive
-      - name: Unpack 1/2
-        uses: a7ul/tar-action@v1.1.0
-        with:
-          command: x
-          files: e2e.tar.gz
-      - name: Unpack 2/2
-        uses: a7ul/tar-action@v1.1.0
-        with:
-          command: x
-          files: build-${{ matrix.os }}.tar.gz
-      - name: Unit Test
-        working-directory: build
-        run: ctest -C ${{env.BUILD_TYPE}}
-      - name: E2E Test
-        working-directory: ${{github.workspace}}/e2e
-        run: python3 e2e-runner.py ../build/HelloWorld
   deploy:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download Build Artifact (ubuntu-latest)
