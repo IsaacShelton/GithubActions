@@ -73,12 +73,12 @@ jobs:
       - name: Stage
         run: |
           mkdir stage
-          mv ubuntu-latest/build/HelloWorld stage/x86_64-Ubuntu-HelloWorld-2
+          mv ubuntu-latest/build/HelloWorld stage/x86_64-Ubuntu-HelloWorld-3
       - name: Release
         uses: IsaacShelton/update-release@HEAD
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release: Nightly
           files: >
-            stage/x86_64-Ubuntu-HelloWorld-2
+            stage/x86_64-Ubuntu-HelloWorld-3
   
