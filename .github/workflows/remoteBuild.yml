@@ -79,5 +79,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release: Nightly
+          replace: true
           files: >
             stage/x86_64-Ubuntu-HelloWorld-3
