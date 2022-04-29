@@ -75,7 +75,7 @@ jobs:
           mkdir stage
           mv ubuntu-latest/build/HelloWorld stage/x86_64-Ubuntu-HelloWorld
       - name: Release
-        uses: IsaacShelton/update-release
+        uses: IsaacShelton/update-release@HEAD
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release: Nightly
