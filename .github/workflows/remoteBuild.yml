@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [windows-latest, macos-latest, ubuntu-latest]
     defaults:
       run:
         working-directory: ${{github.workspace}}
@@ -60,7 +60,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [windows-latest, macos-latest, ubuntu-latest]
     steps:
       - name: Setup Python
         uses: actions/setup-python@v3.1.2
