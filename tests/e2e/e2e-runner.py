@@ -8,4 +8,3 @@ def run_all_tests():
     test([executable], "Hello World\n")
 
 e2e_framework_run(run_all_tests)
-
