@@ -136,6 +136,7 @@ jobs:
         uses: IsaacShelton/update-release@v1.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          release: Nightly
           files: >
             stage/x86_64-Windows-HelloWorld.exe
             stage/arm64-MacOS-HelloWorld
